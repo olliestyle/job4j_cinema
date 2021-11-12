@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="javascript/scripts.js"></script>
+    <title>Cinema</title>
+</head>
+<body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<div class="container">
+    <div class="row pt-3">
+        <div class="container">
+        <div class="row justify-content-center">
+            <h4>
+                Бронирование мест на сеанс
+            </h4>
+        </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th style="width: 120px;">Ряд / Место</th>
+                <th>Место 1</th>
+                <th>Место 2</th>
+                <th>Место 3</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>Ряд 1</th>
+                <td><input type="checkbox" name="place" value="300" id="11"> Ряд 1, Место 1 </td>
+                <td><input type="checkbox" name="place" value="300" id="12"> Ряд 1, Место 2</td>
+                <td><input type="checkbox" name="place" value="300" id="13"> Ряд 1, Место 3</td>
+            </tr>
+            <tr>
+                <th>Ряд 2</th>
+                <td><input type="checkbox" name="place" value="200" id="21"> Ряд 2, Место 1</td>
+                <td><input type="checkbox" name="place" value="200" id="22"> Ряд 2, Место 2</td>
+                <td><input type="checkbox" name="place" value="200" id="23"> Ряд 2, Место 3</td>
+            </tr>
+            <tr>
+                <th>Ряд 3</th>
+                <td><input type="checkbox" name="place" value="100" id="31"> Ряд 3, Место 1</td>
+                <td><input type="checkbox" name="place" value="100" id="32"> Ряд 3, Место 2</td>
+                <td><input type="checkbox" name="place" value="100" id="33"> Ряд 3, Место 3</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    <div class="row float-right">
+        <button type="button" class="btn btn-success" onclick="redirectToPayment()">Оплатить</button>
+    </div>
+</div>
+</body>
+</html>
