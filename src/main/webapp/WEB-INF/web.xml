@@ -5,9 +5,17 @@
          version="4.0">
     <display-name>Archetype Created Web Application</display-name>
     <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>ru.job4j.controller.IndexServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>HallServlet</servlet-name>
         <servlet-class>ru.job4j.controller.HallServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/index.do</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HallServlet</servlet-name>
         <url-pattern>/hall.do</url-pattern>

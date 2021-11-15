@@ -3,11 +3,7 @@ var contextPath = window.location.pathname.substring(0, window.location.pathname
 
 function setActionToHallServlet() {
     var action = document.getElementById("action");
-    action.setAttribute("action", contextPath + "/hall.do");
-}
-
-function validateIndex() {
-    return getCheckedBoxes().length > 0;
+    action.setAttribute("action", contextPath + "/index.do");
 }
 
 function validatePayment() {
@@ -36,33 +32,6 @@ function validatePhoneNumber() {
     return isValid;
 }
 
-function redirectToPayment() {
-    if (validateIndex()) {
-        var checkedBoxes = getCheckedBoxes();
-        var params = "?";
-        for (var i = 0; i < checkedBoxes.length; i++) {
-                params += "cell" + i + "=row" + checkedBoxes[i].getAttribute("data-row")
-                        + "place" + checkedBoxes[i].getAttribute("data-place")
-                        + "price" + checkedBoxes[i].getAttribute("value")  + "&";
-        }
-        var session = document.getElementById('movieSession').getAttribute('data-value');
-        window.location.href = contextPath + "/payment.html" + params + "session=" + session;
-    } else {
-        alert("Вы не выбрали ни одного места");
-    }
-}
-
-function getCheckedBoxes() {
-    var checkBoxes = document.getElementsByName("cell");
-    var checkBoxesChecked = [];
-    for (var i = 0; i < checkBoxes.length; i++) {
-        if (checkBoxes[i].checked) {
-            checkBoxesChecked.push(checkBoxes[i]);
-        }
-    }
-    return checkBoxesChecked;
-}
-
 function addRow() {
     var params = decodeURIComponent(window.location.search).substring(1).split("&");
     var amount = 0;
@@ -74,10 +43,10 @@ function addRow() {
         var price = str.substring(str.indexOf("price") + 5);
         amount += parseInt(price);
         $('#choice').append('<h5>'
-                            + ' Ряд: ' + row
-                            + ' Место: ' + place
-                            + ' Цена: ' + price
-                            + '</h5>');
+            + ' Ряд: ' + row
+            + ' Место: ' + place
+            + ' Цена: ' + price
+            + '</h5>');
     }
     $('#choice').append('<h5>' + 'Общая стоимость билетов: ' + amount + '</h5>');
 }

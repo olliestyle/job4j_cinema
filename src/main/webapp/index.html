@@ -8,13 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="javascript/scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="javascript/index.js"></script>
     <title>Cinema</title>
 </head>
 <body>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <div class="container">
@@ -38,21 +39,21 @@
             <tbody>
             <tr>
                 <th>Ряд 1</th>
-                <td><input type="checkbox" name="cell" value="300" data-row="1" data-place="1"> Ряд 1, Место 1 </td>
-                <td><input type="checkbox" name="cell" value="300" data-row="1" data-place="2"> Ряд 1, Место 2</td>
-                <td><input type="checkbox" name="cell" value="300" data-row="1" data-place="3"> Ряд 1, Место 3</td>
+                <td><input type="checkbox" name="cell" value="300" data-row="1" data-place="1" id="row1place1"> Ряд 1, Место 1 </td>
+                <td><input type="checkbox" name="cell" value="300" data-row="1" data-place="2" id="row1place2"> Ряд 1, Место 2</td>
+                <td><input type="checkbox" name="cell" value="300" data-row="1" data-place="3" id="row1place3"> Ряд 1, Место 3</td>
             </tr>
             <tr>
                 <th>Ряд 2</th>
-                <td><input type="checkbox" name="cell" value="200" data-row="2" data-place="1"> Ряд 2, Место 1</td>
-                <td><input type="checkbox" name="cell" value="200" data-row="2" data-place="2"> Ряд 2, Место 2</td>
-                <td><input type="checkbox" name="cell" value="200" data-row="2" data-place="3"> Ряд 2, Место 3</td>
+                <td><input type="checkbox" name="cell" value="200" data-row="2" data-place="1" id="row2place1"> Ряд 2, Место 1</td>
+                <td><input type="checkbox" name="cell" value="200" data-row="2" data-place="2" id="row2place2"> Ряд 2, Место 2</td>
+                <td><input type="checkbox" name="cell" value="200" data-row="2" data-place="3" id="row2place3"> Ряд 2, Место 3</td>
             </tr>
             <tr>
                 <th>Ряд 3</th>
-                <td><input type="checkbox" name="cell" value="100" data-row="3" data-place="1"> Ряд 3, Место 1</td>
-                <td><input type="checkbox" name="cell" value="100" data-row="3" data-place="2"> Ряд 3, Место 2</td>
-                <td><input type="checkbox" name="cell" value="100" data-row="3" data-place="3"> Ряд 3, Место 3</td>
+                <td><input type="checkbox" name="cell" value="100" data-row="3" data-place="1" id="row3place1"> Ряд 3, Место 1</td>
+                <td><input type="checkbox" name="cell" value="100" data-row="3" data-place="2" id="row3place2"> Ряд 3, Место 2</td>
+                <td><input type="checkbox" name="cell" value="100" data-row="3" data-place="3" id="row3place3"> Ряд 3, Место 3</td>
             </tr>
             </tbody>
         </table>

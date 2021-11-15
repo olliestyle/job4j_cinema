@@ -6,13 +6,13 @@ public class Ticket {
 
     private int id;
     private int row;
-    private int cell;
+    private int place;
     private int sessionId;
     private int accountId;
 
-    public Ticket(int row, int cell, int sessionId, int accountId) {
+    public Ticket(int row, int place, int sessionId, int accountId) {
         this.row = row;
-        this.cell = cell;
+        this.place = place;
         this.sessionId = sessionId;
         this.accountId = accountId;
     }
@@ -33,12 +33,12 @@ public class Ticket {
         this.row = row;
     }
 
-    public int getCell() {
-        return cell;
+    public int getPlace() {
+        return place;
     }
 
-    public void setCell(int cell) {
-        this.cell = cell;
+    public void setPlace(int place) {
+        this.place = place;
     }
 
     public int getSessionId() {

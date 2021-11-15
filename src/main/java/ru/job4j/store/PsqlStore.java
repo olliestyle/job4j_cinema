@@ -11,6 +11,8 @@ import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class PsqlStore implements Store {
@@ -54,11 +56,11 @@ public class PsqlStore implements Store {
         int updated = 0;
         try (Connection con = pool.getConnection();
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO tickets(session_id, row, cell, account_id)"
+                    "INSERT INTO tickets(session_id, row, place, account_id)"
                             + " values (?, ?, ?, ?)")) {
             ps.setInt(1, ticket.getSessionId());
             ps.setInt(2, ticket.getRow());
-            ps.setInt(3, ticket.getCell());
+            ps.setInt(3, ticket.getPlace());
             ps.setInt(4, ticket.getAccountId());
             updated = ps.executeUpdate();
         } catch (Exception e) {
@@ -85,6 +87,27 @@ public class PsqlStore implements Store {
             LOG.error("Error in findAccountByEmail() method", e);
         }
         return accountToReturn;
+    }
+
+    @Override
+    public List<Ticket> findTicketsBySession(String session) {
+        List<Ticket> toReturn = new ArrayList<>();
+        try (Connection con = pool.getConnection();
+             PreparedStatement ps = con.prepareStatement("SELECT * FROM tickets WHERE session_id = ?")) {
+            ps.setInt(1, Integer.parseInt(session));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                toReturn.add(new Ticket(
+                        rs.getInt("row"),
+                        rs.getInt("place"),
+                        rs.getInt("session_id"),
+                        rs.getInt("account_id")
+                ));
+            }
+        } catch (Exception e) {
+            LOG.error("Error in method findTicketsBySession() method" + e);
+        }
+        return toReturn;
     }
 
 }
