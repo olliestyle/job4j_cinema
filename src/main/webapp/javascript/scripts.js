@@ -13,8 +13,13 @@ function validateIndex() {
 function validatePayment() {
     var isValid = true;
     var username = document.getElementById('username').value;
+    var userEmail = document.getElementById('userEmail').value;
     if (username === '') {
         alert("Заполните поле ФИО");
+        isValid = false;
+    }
+    if (userEmail === '') {
+        alert("Заполните поле Email");
         isValid = false;
     }
     return isValid;
@@ -36,20 +41,19 @@ function redirectToPayment() {
         var checkedBoxes = getCheckedBoxes();
         var params = "?";
         for (var i = 0; i < checkedBoxes.length; i++) {
-            if (i === checkedBoxes.length - 1) {
-                params += checkedBoxes[i].getAttribute("id") + "=" + checkedBoxes[i].getAttribute("value");
-            } else {
-                params += checkedBoxes[i].getAttribute("id") + "=" + checkedBoxes[i].getAttribute("value") + "&";
-            }
+                params += "cell" + i + "=row" + checkedBoxes[i].getAttribute("data-row")
+                        + "place" + checkedBoxes[i].getAttribute("data-place")
+                        + "price" + checkedBoxes[i].getAttribute("value")  + "&";
         }
-        window.location.href = contextPath + "/payment.html" + params;
+        var session = document.getElementById('movieSession').getAttribute('data-value');
+        window.location.href = contextPath + "/payment.html" + params + "session=" + session;
     } else {
         alert("Вы не выбрали ни одного места");
     }
 }
 
 function getCheckedBoxes() {
-    var checkBoxes = document.getElementsByName("place");
+    var checkBoxes = document.getElementsByName("cell");
     var checkBoxesChecked = [];
     for (var i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked) {
@@ -62,25 +66,31 @@ function getCheckedBoxes() {
 function addRow() {
     var params = decodeURIComponent(window.location.search).substring(1).split("&");
     var amount = 0;
+    params.pop();
     for (var i = 0; i < params.length; i++) {
         var str = params[i];
-        amount += parseInt(str.substring(str.indexOf("=") + 1));
+        var row = str.substring(str.indexOf("row") + 3, str.indexOf("place"));
+        var place = str.substring(str.indexOf("place") + 5, str.indexOf("price"));
+        var price = str.substring(str.indexOf("price") + 5);
+        amount += parseInt(price);
         $('#choice').append('<h5>'
-                            + ' Ряд: ' + str.charAt(0)
-                            + ' Место: ' + str.charAt(1)
-                            + ' Цена: ' + str.substring(str.indexOf("=") + 1)
+                            + ' Ряд: ' + row
+                            + ' Место: ' + place
+                            + ' Цена: ' + price
                             + '</h5>');
     }
     $('#choice').append('<h5>' + 'Общая стоимость билетов: ' + amount + '</h5>');
 }
 
-function setOccupiedPlaces() {
+function setOccupiedPlacesAndSession() {
     var occupiedPlaces = [];
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    for (const id of urlParams.keys()) {
-        occupiedPlaces.push(id);
+    for (const str of urlParams.values()) {
+        occupiedPlaces.push(str);
     }
-    var places = document.getElementById('places');
+    var session = document.getElementById('session');
+    session.setAttribute('value', occupiedPlaces.pop());
+    var places = document.getElementById('cells');
     places.setAttribute('value', occupiedPlaces.toString());
 }

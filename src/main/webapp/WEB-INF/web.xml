@@ -6,7 +6,7 @@
     <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>HallServlet</servlet-name>
-        <servlet-class>ru.job4j.servlet.HallServlet</servlet-class>
+        <servlet-class>ru.job4j.controller.HallServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HallServlet</servlet-name>
