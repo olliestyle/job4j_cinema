@@ -13,6 +13,7 @@ function executeQuery() {
             }
             for (var cell of data) {
                 document.getElementById("row" + cell.row + "place" + cell.place).disabled = true;
+                document.getElementById("row" + cell.row + "place" + cell.place).className = 'occupied';
             }
         }
     });
