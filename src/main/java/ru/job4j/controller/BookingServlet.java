@@ -37,7 +37,10 @@ public class BookingServlet extends HttpServlet {
             Ticket ticket = new Ticket(row, place, Integer.parseInt(session), account.getId());
             ticketsToBook.add(ticket);
         }
-        BookingService.instOf().bookTickets(ticketsToBook);
-        resp.sendRedirect(req.getContextPath() + "/booking.do?session=" + session);
+        if (BookingService.instOf().bookTickets(ticketsToBook)) {
+            resp.sendRedirect(req.getContextPath() + "/booking.do?session=" + session);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/error.html");
+        }
     }
 }

@@ -51,3 +51,12 @@ label.check input:disabled+span {
     color: green;
     margin-top: 13px
 }
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 50px;
+    color: #FF0000;
+}

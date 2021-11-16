@@ -22,10 +22,14 @@ public class BookingService {
         return Lazy.INST;
     }
 
-    public void bookTickets(List<Ticket> ticketsToBook) {
+    public boolean bookTickets(List<Ticket> ticketsToBook) {
+        boolean booked = true;
         for (Ticket ticket: ticketsToBook) {
-            store.saveTicket(ticket);
+            if (!store.saveTicket(ticket)) {
+                booked = false;
+            }
         }
+        return booked;
     }
 
     public List<Ticket> findBookedTicketsBySession(String session) {
