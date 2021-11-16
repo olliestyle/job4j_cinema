@@ -3,7 +3,7 @@ var contextPath = window.location.pathname.substring(0, window.location.pathname
 
 function setActionToHallServlet() {
     var action = document.getElementById("action");
-    action.setAttribute("action", contextPath + "/index.do");
+    action.setAttribute("action", contextPath + "/booking.do");
 }
 
 function validatePayment() {

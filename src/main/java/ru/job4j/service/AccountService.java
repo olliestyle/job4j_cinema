@@ -8,7 +8,19 @@ public class AccountService {
 
     private final Store store = PsqlStore.instOf();
 
-    public Account findAccountByEmail(String email) {
-        return store.findAccountByEmail(email);
+    private AccountService() {
+
+    }
+
+    private static final class Lazy {
+        private static final AccountService INST = new AccountService();
+    }
+
+    public static AccountService instOf() {
+        return AccountService.Lazy.INST;
+    }
+
+    public Account findAccount(String email, String name, String phone) {
+        return store.findAccount(email, name, phone);
     }
 }

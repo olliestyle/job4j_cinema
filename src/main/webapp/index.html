@@ -10,102 +10,60 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="javascript/index.js"></script>
-    <title>Cinema</title>
+    <style>
+        body {
+            background-image: url("images/cinema.jpg");
+            background-position: 50% 15%;
+            background-size: 75%;
+        }
+    </style>
+    <title>Выбор сеанса</title>
 </head>
 <body>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<div class="container">
-    <div class="row pt-3">
-        <div class="container">
-        <div class="row justify-content-center">
-            <h4>
-                Бронирование мест на сеанс
-            </h4>
-        </div>
-        </div>
-        <table class="table table-bordered">
-            <thead id="movieSession" data-value="111">
-            <tr>
-                <th style="width: 120px;">Ряд / Место</th>
-                <th>Место 1</th>
-                <th>Место 2</th>
-                <th>Место 3</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th>Ряд 1</th>
-                <td>
-                    <label class="check">
-                        <input type="checkbox" name="cell" value="300" data-row="1" data-place="1" id="row1place1">
-                        <span>Ряд 1, Место 1</span>
-                    </label>
-                </td>
-                <td>
-                    <label class="check">
-                    <input type="checkbox" name="cell" value="300" data-row="1" data-place="2" id="row1place2">
-                        <span>Ряд 1, Место 2</span>
-                    </label>
-                </td>
-                <td>
-                    <label class="check">
-                    <input type="checkbox" name="cell" value="300" data-row="1" data-place="3" id="row1place3">
-                        <span>Ряд 1, Место 3</span>
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <th>Ряд 2</th>
-                <td>
-                    <label class="check">
-                    <input type="checkbox" name="cell" value="200" data-row="2" data-place="1" id="row2place1">
-                        <span>Ряд 2, Место 1</span>
-                    </label>
-                </td>
-                <td>
-                    <label class="check">
-                    <input type="checkbox" name="cell" value="200" data-row="2" data-place="2" id="row2place2">
-                        <span>Ряд 2, Место 2</span>
-                    </label>
-                </td>
-                <td>
-                    <label class="check">
-                    <input type="checkbox" name="cell" value="200" data-row="2" data-place="3" id="row2place3">
-                        <span>Ряд 2, Место 3</span>
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <th>Ряд 3</th>
-                <td>
-                    <label class="check">
-                    <input type="checkbox" name="cell" value="100" data-row="3" data-place="1" id="row3place1">
-                        <span>Ряд 3, Место 1</span>
-                    </label>
-                </td>
-                <td>
-                    <label class="check">
-                    <input type="checkbox" name="cell" value="100" data-row="3" data-place="2" id="row3place2">
-                        <span>Ряд 3, Место 2</span>
-                    </label>
-                </td>
-                <td>
-                    <label class="check">
-                    <input type="checkbox" name="cell" value="100" data-row="3" data-place="3" id="row3place3">
-                        <span>Ряд 3, Место 3</span>
-                    </label>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        </div>
-    <div class="row float-right">
-        <button type="button" class="btn btn-success" onclick="redirectToPayment()">Оплатить</button>
+    <div style="margin-left: 250px" class="container">
+        <br>
+        <form id="films">Выберите сеанс
+            <ul>
+                <li>Иван Васильевич меняет профессию
+                    <br>
+                    <input type="radio" name="film" value="11040"> 10-40
+                    <br>
+                    <input type="radio" name="film" value="11330"> 13-30
+                    <br>
+                    <input type="radio" name="film" value="11650"> 16-50
+                    <br>
+                    <input type="radio" name="film" value="11920"> 19-20
+                    <br>
+                </li>
+                <br>
+                <li>Операция «Ы» и другие приключения Шурика
+                    <br>
+                    <input type="radio" name="film" value="21020"> 10-20
+                    <br>
+                    <input type="radio" name="film" value="21435"> 14-35
+                    <br>
+                    <input type="radio" name="film" value="21845"> 18-45
+                    <br>
+                    <input type="radio" name="film" value="22020"> 20-20
+                    <br>
+                </li>
+                <br>
+                <li>Бриллиантовая рука
+                    <br>
+                    <input type="radio" name="film" value="41050"> 10-50
+                    <br>
+                    <input type="radio" name="film" value="41540"> 15-40
+                    <br>
+                    <input type="radio" name="film" value="41820"> 18-20
+                    <br>
+                    <input type="radio" name="film" value="42330"> 23-30
+                    <br>
+                </li>
+            </ul>
+            <br>
+            <button type="button" class="btn btn-success" onclick="return redirectToBooking()">Перейти к бронированию</button>
+            <br>
+        </form>
     </div>
-</div>
 </body>
 </html>

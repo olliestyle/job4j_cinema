@@ -13,23 +13,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IndexServlet extends HttpServlet {
-
-    private final AccountService accountService = new AccountService();
+public class BookingServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("index.html").forward(req, resp);
+        req.getRequestDispatcher("booking.html").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        BookingService bookingService = BookingService.instOf();
         String cells = req.getParameter("cells");
         String session = req.getParameter("session");
         String email = req.getParameter("userEmail");
-        Account account = accountService.findAccountByEmail(email);
+        String name = req.getParameter("userName");
+        String phone = req.getParameter("userPhone");
+        Account account = AccountService.instOf().findAccount(email, name, phone);
         String[] toParse = cells.split(",");
         List<Ticket> ticketsToBook = new ArrayList<>();
         for (String str: toParse) {
@@ -38,7 +37,7 @@ public class IndexServlet extends HttpServlet {
             Ticket ticket = new Ticket(row, place, Integer.parseInt(session), account.getId());
             ticketsToBook.add(ticket);
         }
-        bookingService.bookTickets(ticketsToBook);
-        resp.sendRedirect(req.getContextPath() + "/index.do");
+        BookingService.instOf().bookTickets(ticketsToBook);
+        resp.sendRedirect(req.getContextPath() + "/booking.do?session=" + session);
     }
 }

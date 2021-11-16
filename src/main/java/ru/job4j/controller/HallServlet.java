@@ -20,10 +20,9 @@ public class HallServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        BookingService bookingService = BookingService.instOf();
         resp.setContentType("application/json; charset=utf-8");
         OutputStream output = resp.getOutputStream();
-        List<Ticket> ticketList = bookingService.findBookedTicketsBySession(req.getParameter("session"));
+        List<Ticket> ticketList = BookingService.instOf().findBookedTicketsBySession(req.getParameter("session"));
         String json = GSON.toJson(ticketList);
         output.write(json.getBytes(StandardCharsets.UTF_8));
         output.flush();

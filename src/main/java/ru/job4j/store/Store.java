@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface Store {
     boolean saveTicket(Ticket ticket);
-    Account findAccountByEmail(String email);
+    Account saveAccount(String email, String name, String phone);
+    Account findAccount(String email, String name, String phone);
     List<Ticket> findTicketsBySession(String session);
 }

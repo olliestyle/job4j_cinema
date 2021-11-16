@@ -70,7 +70,29 @@ public class PsqlStore implements Store {
     }
 
     @Override
-    public Account findAccountByEmail(String email) {
+    public Account saveAccount(String email, String name, String phone) {
+        Account toReturn = null;
+        try (Connection con = pool.getConnection();
+             PreparedStatement ps = con.prepareStatement(
+                     "INSERT INTO accounts (username, email, phone)"
+                             + " VALUES (?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, phone);
+            ps.execute();
+            try (ResultSet rs = ps.getGeneratedKeys()) {
+                if (rs.next()) {
+                    toReturn = new Account(rs.getInt(1), name, email, phone);
+                }
+            }
+        } catch (Exception e) {
+            LOG.error("Error in saveAccount() method");
+        }
+        return toReturn;
+    }
+
+    @Override
+    public Account findAccount(String email, String name, String phone) {
         Account accountToReturn = null;
         try (Connection con = pool.getConnection();
              PreparedStatement ps = con.prepareStatement("SELECT * FROM accounts WHERE email = ?")) {
@@ -82,6 +104,8 @@ public class PsqlStore implements Store {
                         rs.getString("userName"),
                         rs.getString("email"),
                         rs.getString("phone"));
+            } else {
+                accountToReturn = saveAccount(email, name, phone);
             }
         } catch (Exception e) {
             LOG.error("Error in findAccountByEmail() method", e);
@@ -109,5 +133,4 @@ public class PsqlStore implements Store {
         }
         return toReturn;
     }
-
 }
