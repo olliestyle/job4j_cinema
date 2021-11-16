@@ -4,7 +4,7 @@ var contextPath = window.location.pathname.substring(0, window.location.pathname
 function executeQuery() {
     $.ajax({
         type: 'GET',
-        url: 'http://192.168.0.106:8080/job4j_cinema/hall.do' + '?session=' + document.getElementById('movieSession').getAttribute('data-value'),
+        url: 'http://localhost:8080/job4j_cinema/hall.do' + '?session=' + document.getElementById('movieSession').getAttribute('data-value'),
         dataType: 'json',
         success: function(data) {
             var checkBoxes = document.getElementsByName("cell");
