@@ -64,7 +64,7 @@ public class PsqlStore implements Store {
             ps.setInt(4, ticket.getAccountId());
             updated = ps.executeUpdate();
         } catch (Exception e) {
-            LOG.error("Error in saveTicket() method", e);
+            LOG.error("Error in saveTicket() method, ticket: " + ticket + " is already booked", e);
         }
         return updated > 0;
     }

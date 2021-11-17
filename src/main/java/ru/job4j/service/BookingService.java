@@ -27,6 +27,7 @@ public class BookingService {
         for (Ticket ticket: ticketsToBook) {
             if (!store.saveTicket(ticket)) {
                 booked = false;
+                break;
             }
         }
         return booked;

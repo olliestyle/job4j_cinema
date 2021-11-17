@@ -13,6 +13,8 @@
 
 ![Image of Cinema](https://github.com/olliestyle/job4j_cinema/blob/main/images/job4jcinema6.png)
 
+![Image of Cinema](https://github.com/olliestyle/job4j_cinema/blob/main/images/job4jcinema7.png)
+
 1. Приложение Кинотеатр. Пользователи бронируют билеты на желаемый сеанс.<br />
 Бэк: Servlet, JavaEE, JDK11<br />
 Фронт: HTML5, CSS3, javascript, bootstrap, jquery.<br />
